@@ -1,6 +1,9 @@
-# This file contains data about brazilian cities, got from IBGE website (2010)
+#* row dataprotocols v1.0
+# This file contains data about brazilian cities, obtained from the IBGE
+# website (2010)
 # "area" is in km²
-state	city	inhabitants	area
+#: string	string	integer	number
+#. state	city	inhabitants	area
 AC	Acrelândia	12538	1807.92
 AC	Assis Brasil	6072	4974.18
 AC	Brasiléia	21398	3916.5
@@ -44,6 +47,7 @@ AL	Capela	17077	242.62
 AL	Carneiros	8290	113.06
 AL	Chã Preta	7146	172.85
 AL	Coité do Nóia	10926	88.51
+# Note that a comment is here. There is an empty line further down.
 AL	Colônia Leopoldina	20019	207.89
 AL	Coqueiro Seco	5526	39.73
 AL	Coruripe	52130	918.21
@@ -51,6 +55,7 @@ AL	Craíbas	22641	271.33
 AL	Delmiro Gouveia	48096	607.81
 AL	Dois Riachos	10880	140.47
 AL	Estrela de Alagoas	17251	259.77
+
 AL	Feira Grande	21321	172.75
 AL	Feliz Deserto	4345	91.84
 AL	Flexeiras	12325	333.22

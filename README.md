@@ -40,8 +40,18 @@ In the unframed format,
   improve compatiblity with the framed format, where leading `#` indicates a
   comment.
 
-The framed format is still being talked about. Please join [the
-discussion][issue76].
+The framed format is still under [discussion][issue76]. In the framed format,
+lines beginning with `#` are comments or supply metadata like column types and
+names, format version and schema information. One can take advantage of this
+fact to strip framing, sort a dataset and then restore framing:
+
+    sed '/^#/! d' < in.row > frame.row
+    sed '/^#/ d' < in.row | LC_ALL=C sort > sorted_data.row
+    cat frame.row sorted_data.row > sorted.row
+
+    # Or without temporaries...
+    ( sed '/^#/! d' < in.row &&
+      sed '/^#/ d' < in.row | LC_ALL=C sort ) > sorted.row
 
 Example of Usage
 ----------------

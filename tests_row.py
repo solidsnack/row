@@ -51,11 +51,25 @@ class TestTab(unittest.TestCase):
         result = parse(contents)
         self.assertEqual(result, expected)
 
-    def test_parse_file(self):
+    def test_parse_unframed_file(self):
         cities = parse_file('brazilian-cities.tsv')
         self.assertEqual(len(cities), 5565)
 
         cities_rio = [city for city in cities if city[0] == u'RJ']
+        self.assertEqual(len(cities_rio), 92)
+
+        types_values = set([type(value) for city in cities for value in city])
+        expected_types = set([unicode])
+        self.assertEqual(types_values, expected_types)
+
+    def test_parse_framed_file(self):
+        (framing, cities) = parse_file('brazilian-cities.row', framed=True)
+        self.assertIsNotNone(framing)
+        self.assertEqual(len(cities), 5565)
+        self.assertEqual(framing.columns,
+                         ['state', 'city', 'inhabitants', 'area'])
+
+        cities_rio = [city for city in cities if city['state'] == u'RJ']
         self.assertEqual(len(cities_rio), 92)
 
         types_values = set([type(value) for city in cities for value in city])
